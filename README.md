@@ -1,6 +1,8 @@
-# Gurc
+# Gurc 🥒 (Great Undo-Redo Closure)
 
-**TODO: Add description**
+This is a Elixir library inspired by this excellent [writeup](https://github.com/zaboople/klonk/blob/master/TheGURQ.md).
+
+It implements an undo-stack which does not throw away state when you undo steps and then do more edits. Instead, the whole history of editing is preserved as a linear timeline. This provides the end-user with a way to travel back and forth in time without the fear of using work.
 
 ## Installation
 
