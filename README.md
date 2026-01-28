@@ -1,18 +1,21 @@
-# Gurc 🥒 (Great Undo-Redo Closure)
+# Rearview
 
-This is a Elixir library inspired by this excellent [writeup](https://github.com/zaboople/klonk/blob/master/TheGURQ.md).
+This is an Elixir library inspired by this excellent [writeup](https://github.com/zaboople/klonk/blob/master/TheGURQ.md) ([HN discusion](https://news.ycombinator.com/item?id=33560275)).
 
-It implements an undo-stack which does not throw away state when you undo steps and then do more edits. Instead, the whole history of editing is preserved as a linear timeline. This provides the end-user with a way to travel back and forth in time without the fear of using work.
+It implements an Emacs-style undo-stack which does not throw away state when you undo steps and then do more edits. Instead, the whole history of edits is preserved as a linear timeline. This provides the end-user with a way to travel back and forth in time without the fear of using work.
+
+## Memory cosumption
+Rearview stores the states you record (not diffs) so it can consume quite a bit of memory. If each state is large it might be worth switching on compression.
 
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `gurc` to your list of dependencies in `mix.exs`:
+by adding `rearview` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
   [
-    {:gurc, "~> 0.1.0"}
+    {:rearview, "~> 0.1.0"}
   ]
 end
 ```
