@@ -6,6 +6,7 @@ defmodule Rearview.MixProject do
       app: :rearview,
       version: "0.1.0",
       elixir: "~> 1.18",
+      package: package(),
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
@@ -22,6 +23,15 @@ defmodule Rearview.MixProject do
   defp deps do
     [
       {:ex_doc, "~> 0.34", only: :dev, runtime: false, warn_if_outdated: true}
+    ]
+  end
+  
+  defp package() do
+    [
+     name: "rearview",
+     description: "Library for undo-redo, Emacs-style",
+     links: %{"GitHub" => "https://github.com/odo/rearview"},
+     licenses: ["MIT"],
     ]
   end
 end
