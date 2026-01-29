@@ -4,7 +4,8 @@ defmodule Rearview do
   """
 
   defstruct options: [], current: nil, undo: [], redo: [], storage: %{} 
- @doc """
+  
+  @doc """
   Initializes the `Rearview` datastructure.
   
   Compression is optional (default is `false`) which is recommended for small payloads.
@@ -22,7 +23,7 @@ defmodule Rearview do
     {:ok, %Rearview{options: options}}
   end
 
-@doc """
+  @doc """
   Records a new user-generated state.
 
   Returns `{:ok, next_state}` with a new undo-redo datastructure.
@@ -53,7 +54,7 @@ defmodule Rearview do
     {:ok, %Rearview{state | current: record_hash, undo: next_undo, redo: [], storage: next_storage}}
   end
 
-@doc """
+  @doc """
   Reverts to a previously recoded user state.
 
   Returns `{:ok, previous_user_state, next_state}` or `{:error, :nothing_to_undo}`.
@@ -87,7 +88,7 @@ defmodule Rearview do
     {:ok, get_from_storage(last, storage, options), %Rearview{state | current: last, undo: rest_undo, redo: [current | redo]}}
   end
 
-@doc """
+  @doc """
   Forwards to a user state next_state was previously reverted.
 
   Returns `{:ok, reverted_user_state, next_state}` or `{:error, :nothing_to_redo}`.
