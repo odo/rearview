@@ -2,10 +2,10 @@
 
 This is an Elixir library inspired by this excellent [writeup](https://github.com/zaboople/klonk/blob/master/TheGURQ.md) ([HN discusion](https://news.ycombinator.com/item?id=33560275)).
 
-It implements an Emacs-style undo-stack which does not throw away state when you undo steps and then do more edits. Instead, the whole history of edits is preserved as a linear timeline. This provides the end-user with a way to travel back and forth in time without the fear of using work.
+It implements an Emacs-style undo-stack which does not throw away state when you undo steps and then do more edits. Instead, the whole history of edits is preserved as a linear timeline. This provides the end-user with a way to travel back and forth in time without the fear of losing work.
 
 ## Usage
-Rearview is just a library, so you have to manage the state on your side.
+Rearview is just a library, so you have to keep the Rearview state on your side.
 In this example, we are storing integers to keep track of the order of inserts.
 
 ```elixir
@@ -36,7 +36,7 @@ In this example, we are storing integers to keep track of the order of inserts.
 ```
 
 ## Memory cosumption
-Rearview stores the states you record (not diffs) so it can consume quite a bit of memory. If each state is large it might be worth switching on compression.
+Rearview stores the states you record (not diffs) so it can consume quite a bit of memory (even though it's de-duplicated). If each state is large it might be worth switching on compression.
 
 ## Installation
 
