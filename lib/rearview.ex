@@ -28,7 +28,7 @@ defmodule Rearview do
 
   Returns `{:ok, next_state}` with a new undo-redo datastructure.
 
-  ## Examples
+  ## Example
 
       iex> {:ok, state} = Rearview.init()
       iex> {:ok, _next_state} = Rearview.record("Three programmers walk into a bar", state)
@@ -59,7 +59,7 @@ defmodule Rearview do
 
   Returns `{:ok, previous_user_state, next_state}` or `{:error, :nothing_to_undo}`.
 
-  ## Examples
+  ## Example
 
       iex> {:ok, state} = Rearview.init()
       iex> {:ok, state} = Rearview.record("Three programmers walk", state)
@@ -93,7 +93,7 @@ defmodule Rearview do
 
   Returns `{:ok, reverted_user_state, next_state}` or `{:error, :nothing_to_redo}`.
 
-  ## Examples
+  ## Example
 
       iex> {:ok, state} = Rearview.init()
       iex> {:ok, state} = Rearview.record("Three programmers walk", state)
@@ -133,13 +133,13 @@ defmodule Rearview do
     Map.get(storage, hash) |> maybe_decompress(compression)
   end
 
-  def maybe_compress(payload, false), do: payload
-  def maybe_compress(payload, true) do
+  defp maybe_compress(payload, false), do: payload
+  defp maybe_compress(payload, true) do
       payload |> :erlang.term_to_binary() |> :zlib.gzip()
   end
 
-  def maybe_decompress(payload, false), do: payload
-  def maybe_decompress(payload, true) do
+  defp maybe_decompress(payload, false), do: payload
+  defp maybe_decompress(payload, true) do
       payload |> :zlib.gunzip() |> :erlang.binary_to_term()
   end
 end
